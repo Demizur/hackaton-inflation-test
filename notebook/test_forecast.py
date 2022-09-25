@@ -55,18 +55,18 @@ def run_model(path: str, filename:str, target_path: str):
     x_test = test.drop(labels = ['Целевой показатель (для проверки адаптивности)'], axis=1)
 
 
-    xgb_r = xg.XGBRegressor(objective ='reg:squarederror',
+    model = xg.XGBRegressor(objective ='reg:squarederror',
                       n_estimators = 10, seed = 123)
 
     # Fitting the model
-    xgb_r.fit(x_train, y_train)
+    model.fit(x_train, y_train)
       
     # Predict the model
-    pred = xgb_r.predict(x_test)
+    pred = model.predict(x_test)
 
-    xgb_r.save_model("test_model.json")
+    model.save_model("test_model.json")
  
-    # считаем метрику и записываем результат в файл
+    # записываем результат в файл
 
     f = open(filename,"w+")
     f.write(str(pred[0]))
