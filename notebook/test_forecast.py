@@ -45,7 +45,7 @@ def run_model(path: str, filename:str, target_path: str):
 
     """ разделяем на тестовую и тренировочную выборки"""
 
-    train, test = ds[0:(len(ds)-1)], ds[(len(ds)-1):]
+    train, test = ds[0:(len(data)-1)], ds[(len(data)-1):]
 
     # Убираем из тренировочной выборки таргет
     y_train= train['Целевой показатель (для проверки адаптивности)']
